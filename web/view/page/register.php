@@ -10,10 +10,13 @@
         <h1>Inscription</h1>
         
         <?php
+            
+            $pictures_dir='../../../resources/pictures/';
             if ( isset($_FILES['fichier']) && $_FILES['fichier']['type']=='image/jpeg'):
 
-             move_uploaded_file($_FILES['fichier']['tmp_name'],
-               dirname(__FILE__).'/resources/pictures/'.$_FILES['fichier']['name']); ?>
+             move_uploaded_file($_FILES['fichier']['tmp_name'],$pictures_dir.$_FILES['fichier']['name']); 
+            
+        ?>
 
              <p>Vous êtes maintenant inscrit !</p>
              
@@ -27,20 +30,20 @@
              <div class="row">
             <form class="col-md-5 col-md-offset-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="Inputprenom">Prénom</label>
-                <input type="text" class="form-control" id="Inputprenom" placeholder="Prénom">
+                <label for="InputPrenom">Prénom</label>
+                <input type="text" class="form-control" id="InputPrenom" placeholder="Prénom" name="InputPrenom">
               </div>
               <div class="form-group">
                 <label for="InputName">Nom</label>
-                <input type="text" class="form-control" id="InputName" placeholder="Nom">
+                <input type="text" class="form-control" id="InputName" placeholder="Nom" name="InputName">
               </div>            
               <div class="form-group">
                 <label for="InputEmail1">Adresse email</label>
-                <input type="email" class="form-control" id="InputEmail1" placeholder="Adresse email">
+                <input type="email" class="form-control" id="InputEmail1" placeholder="Adresse email" name="InputEmail1">
               </div>
               <div class="form-group">
                 <label for="InputPassword1">Mot de passe</label>
-                <input type="password" class="form-control" id="InputPassword1" placeholder="Mot de passe">
+                <input type="password" class="form-control" id="InputPassword1" placeholder="Mot de passe" name="InputPassword1">
               </div>
               <div class="form-group">
                 <label for="InputFile">Photo de profil</label>
@@ -53,5 +56,52 @@
         </div>
 
         <?php endif; ?>
+         
+        <!-- Ecriture des donnees dans la table utilisateurs-->
+         <?php
+    // On commence par récupérer les champs
+            if(isset($_POST['InputName']))      $nom=$_POST['InputName'];
+            else      $nom="";
+
+            if(isset($_POST['InputPrenom']))      $prenom=$_POST['InputPrenom'];
+            else      $prenom="";
+
+            if(isset($_POST['InputEmail1']))      $email=$_POST['InputEmail1'];
+            else      $email="";
+
+            if(isset($_POST['InputPassword1']))      $password=$_POST['InputPassword1'];
+            else      $password="";
+
+            if(isset($_FILES['fichier']))      $photo=$pictures_dir.$_FILES['fichier']['name'].$_FILES['fichier']['type'];
+            else      $photo="";
+
+            
+   
+            // connexion à la base
+            try 
+            { 
+                $bdd = new PDO('mysql:host=localhost;dbname=musique;charset=utf8', 'root', '');
+            }
+            catch(Exception $e)
+            {
+                die('Erreur : '.$e->getMessage());
+            }
+            
+           //On ajoute les infos a la bdd
+            $req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Email, Password, Photo) VALUES(:Nom, :Prenom, :Email, :Password, :Photo)');
+            $req->execute(array(
+                'Nom' => $nom,
+                'Prenom' => $prenom,
+                'Email' => $email,
+                'Password' => $password,
+                'Photo' => $photo
+                ));
+
+            
+
+
+                
+?> 
+  
     </body>
 </html>

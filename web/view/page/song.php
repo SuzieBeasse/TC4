@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Chanson</title>
+        <link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
     </head>
 
     <body>
