@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Register</title>
 		<link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
+       
     </head>
 	<body>
         <?php include("../component/navbar.php"); ?>
@@ -27,7 +28,7 @@
                echo '<div class="error">Le téléchargement est réservé aux fichiers jpeg !</div>';
              } ?>
 
-             <div class="row">
+        <div class="row">
             <form class="col-md-5 col-md-offset-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="InputPrenom">Prénom</label>
@@ -72,7 +73,7 @@
             if(isset($_POST['InputPassword1']))      $password=$_POST['InputPassword1'];
             else      $password="";
 
-            if(isset($_FILES['fichier']))      $photo=$pictures_dir.$_FILES['fichier']['name'].$_FILES['fichier']['type'];
+            if(isset($_FILES['fichier']))      $photo='/TC4/resources/pictures/'.$_FILES['fichier']['name'];
             else      $photo="";
 
             

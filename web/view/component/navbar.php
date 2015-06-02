@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="/TC4/index.php">Accueil</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +23,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a href="/TC4/web/view/page/log_in.php">Se connecter</a></li>
         <li><a href="/TC4/web/view/page/register.php">Créer un compte</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
