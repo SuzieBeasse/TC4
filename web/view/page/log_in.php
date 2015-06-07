@@ -9,10 +9,11 @@
     
     <body>
         <?php include("../component/navbar.php"); ?>
+        <?php include("../component/bdd.php"); ?>
         <h1> Connexion</h1>
         
         <div class="row">
-            <form class="col-md-5 col-md-offset-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <form class="col-md-5 col-md-offset-3" action="/TC4/web/controller/connect.php" method="post" enctype="multipart/form-data">
                 
               <div class="form-group">
                 <label for="InputEmail2">Adresse email</label>
@@ -27,43 +28,7 @@
             </form>    
         </div>
         
-        <?php
-    // connexion à la base
-            try 
-            { 
-                $bdd = new PDO('mysql:host=localhost;dbname=musique;charset=utf8', 'root', '');
-            }
-            catch(Exception $e)
-            {
-                die('Erreur : '.$e->getMessage());
-            }
-
-            $email='InputEmail2';
-            $password1='InputPassword2';
         
-            // Vérification des identifiants
-            $req = $bdd->prepare('SELECT id FROM utilisateurs WHERE Email = :Email AND Password = :Password');
-            $req->execute(array(
-                'Email' => $email,
-                'Password' => $password1));
-
-            $resultat = $req->fetch();
-
-            if (!$resultat)
-            {
-                echo 'Mauvais identifiant ou mot de passe !';
-            }
-
-            else
-            {
-                session_start();
-                $_SESSION['id'] = $resultat['id'];
-                $_SESSION['Email'] = $email;
-                echo 'Vous êtes connecté !';
-            }
-        ?>
-    
-    
     
     
     

@@ -16,15 +16,23 @@
       <ul class="nav navbar-nav">
           <li><a href="#">Link</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+      <form class="navbar-form navbar-left" role="search" action="/TC4/web/view/page/result.php">
+        <div class="form-group" >
+          <input type="text" name="requete" class="form-control" placeholder="Rechercher un titre">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default" >Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/TC4/web/view/page/log_in.php">Se connecter</a></li>
-        <li><a href="/TC4/web/view/page/register.php">Créer un compte</a></li>
+          <?php 
+                session_start();
+if (isset($_SESSION['Email']) ){  ?>
+                    <li><a href="/TC4/web/view/page/user.php">Profil</a></li>
+                    <li><a href="/TC4/web/controller/deconnect.php">Se déconnecter</a></li> 
+          <?php } 
+                    else { ?>          
+                    <li><a href="/TC4/web/view/page/log_in.php">Se connecter</a></li>
+                    <li><a href="/TC4/web/view/page/register.php">Créer un compte</a></li>
+          <?php } ?>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

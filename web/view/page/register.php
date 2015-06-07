@@ -8,6 +8,7 @@
     </head>
 	<body>
         <?php include("../component/navbar.php"); ?>
+        <?php include("../component/bdd.php"); ?>
         <h1>Inscription</h1>
         
         <?php
@@ -76,26 +77,20 @@
             if(isset($_FILES['fichier']))      $photo='/TC4/resources/pictures/'.$_FILES['fichier']['name'];
             else      $photo="";
 
-            
+            include("../../controller/thumb.php");
+        
    
-            // connexion à la base
-            try 
-            { 
-                $bdd = new PDO('mysql:host=localhost;dbname=musique;charset=utf8', 'root', '');
-            }
-            catch(Exception $e)
-            {
-                die('Erreur : '.$e->getMessage());
-            }
+            
             
            //On ajoute les infos a la bdd
-            $req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Email, Password, Photo) VALUES(:Nom, :Prenom, :Email, :Password, :Photo)');
+            $req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Email, Password, Photo, Thumb) VALUES(:Nom, :Prenom, :Email, :Password, :Photo, :Thumb)');
             $req->execute(array(
                 'Nom' => $nom,
                 'Prenom' => $prenom,
                 'Email' => $email,
                 'Password' => $password,
-                'Photo' => $photo
+                'Photo' => $photo,
+                'Thumb'=> $thumb
                 ));
 
             
