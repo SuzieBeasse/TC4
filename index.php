@@ -13,15 +13,19 @@
         </header>
         
         <section>
-            <h1> Centrale Sound</h1>
+            <div class="col-md-offset-1">
+                <img class="img logo" src="/TC4/resources/pictures/centrale_sound.jpg" alt="Centrale Sound">
+                <h1> Centrale Sound</h1>
+            </div>
+                    
             <p>
             <h2> Top 200 </h2>
                 <?php 
-                    $reponse = $bdd->query('SELECT * FROM chansons ORDER BY Score');
+                    $reponse = $bdd->query('SELECT * FROM chansons ORDER BY Score DESC');
                     while ($donnees = $reponse->fetch()) {
                 ?> 
             
-                    <ul class="media-list col-offset-3">
+                    <ul class="media-list col-md-offset-3">
                           <li class="media">
                             <div class="media-left">
                               <a href="/TC4/web/view/page/song.php?ID=<?php echo $donnees['ID']?>">

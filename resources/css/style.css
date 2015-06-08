@@ -10,4 +10,14 @@ section {
     height: 200px;
     width: 200px;
     padding: 0px;
+    float:left;
+}
+
+.username {
+    line-height:200px;
+    padding-left: 30px;
+}
+
+.logo{
+    float:center;
 }

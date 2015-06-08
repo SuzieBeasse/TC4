@@ -42,9 +42,7 @@
                 <div>
                     <?php include ("../../controller/get_tag.php");?>        
                 </div>
-        
-            
-                
+                                
                 <div class="row">
                     <form class="col-md-4 " action="../../controller/tag.php" method="post">
                         <div class="form-group">
