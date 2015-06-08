@@ -3,58 +3,56 @@
     <head>
         <meta charset="utf-8" />
         <title>Chanson</title>
-        <link rel="stylesheet" href="/TC4/resources/css/style.css" />
         <link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
+        <link rel="stylesheet" href="/TC4/resources/css/style.css" />
     </head>
-    
-    <header>
-        <?php include("../component/navbar.php"); ?>
-        <?php include("../component/bdd.php"); ?>  
-    
-    </header>
 
     <body>
-        <?php 
-            $info=$_GET['ID']; 
+        <header>
+            <?php include("../component/navbar.php"); ?>
+            <?php include("../../model/bdd.php"); ?> 
+        </header>
+        <section>
+            <?php 
+                $req = $bdd->prepare('SELECT * FROM chansons WHERE ID=:id');
+                $req->execute(array('id' => $_GET['ID']));
+                $donnees=$req->fetch();
+            ?>
+        
+            <h1> <?php echo $donnees['Titre']; ?> </h1> 
             
-        
-            $req = $bdd->prepare('SELECT * FROM chansons WHERE ID= :ID');
-            $req->execute(array(
-                'ID' => $info));
-                
-            $donnees=$req->fetch()
-        ?>
-        
-
-
-        
-            <h1> <?php echo $donnees['Titre']?> </h1> 
-                
-            <p> <?php echo $donnees['VideoYoutube']?></iframe>
-                
+            <p>
+                <?php echo $donnees['VideoYoutube']; ?>
             </p>
-            <h2> Informations relatives à la chanson </h2>
+            
+            <h1> Informations relatives à la chanson </h1>
             <p>
                 <ul>
-                    <li>Interprète : <?php echo $donnees['Interprete']?></li>
-                    <li>Album : <?php echo $donnees['Album']?></li>
-                    <li>Année de sortie : <?php echo $donnees['AnneeDeSortie']?></li>
-                    <li>Genre :  <?php echo $donnees['Genre']?></li>
-                    <li>Pays d origine :  <?php echo $donnees['Pays']?></li>
+                    <li>Interprète : <?php echo $donnees['Interprete']; ?></li>
+                    <li>Album : <?php echo $donnees['Album']; ?></li>
+                    <li>Année de sortie : <?php echo $donnees['AnneeDeSortie']; ?></li>
+                    <li>Genre :  <?php echo $donnees['Genre']; ?></li>
+                    <li>Pays d origine :  <?php echo $donnees['Pays']; ?></li>
                 </ul>
             </p>
-
-
-            <h2> Critiques </h2>
-       
-       
-        
-        
-        
-    
+            <?php  
+                $req->closeCursor()
+            ?>
+            <h2> Tag </h2>
             
+            //TODO Afficher les tags
         
-               
-    
+            <div class="row">
+                <form class="col-md-5 col-md-offset-3" action="TC4/web/controller/tag.php" method="post">
+                    <div class="form-group">
+                        <label for="tagName">Nom</label>
+                        <input type="hidden" name="songId" value="<?php echo $_GET['ID']?>">
+                        <input type="text" class="form-control" id="tagName" placeholder="Entrez le nom du tag" name="tagName">
+                    </div>
+                    <button type="submit" class="btn btn-default">Ajouter</button>
+                </form> 
+            </div>
+            
+        </section> 
     </body>
 </html>

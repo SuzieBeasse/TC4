@@ -4,49 +4,38 @@
         <meta charset="utf-8" />
         <title>Result</title>
 		<link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
-       
+		<link rel="stylesheet" href="/TC4/resources/css/style.css" />
     </head>
-    <header> 
-        <?php include("../component/navbar.php"); ?>
-        <?php include("../component/bdd.php"); ?>
     
-    </header>
     
     <body>
-         <?php
-                $requete = htmlspecialchars($_POST['requete']); 
-                // on crée une variable $requete pour faciliter l'écriture de la requête SQL, mais aussi pour empêcher les éventuels malins qui                         utiliseraient du PHP ou du JS, avec la fonction htmlspecialchars().
+        <header> 
+            <?php include("../component/navbar.php"); ?>
+            <?php include("../../model/bdd.php"); ?>
 
-                $query = "SELECT * FROM chansons WHERE Titre LIKE '%$requete%' ORDER BY ID DESC" 
-                $r = $bdd->query($query) or die ('Problème avec la requête '.  $query.'<br/>'.$bdd->errorInfo()[2]);
-               
-
-                //$nb_resultats = mysql_num_rows($query); 
-                // on utilise la fonction mysql_num_rows pour compter les résultats pour vérifier par après
-        ?>
+        </header>
         
-        <h3>Résultats de votre recherche</h3>
+        <section>
+            <?php
+                $requete = htmlspecialchars($_POST['search']); 
+                $query = "SELECT * FROM chansons WHERE Titre='".$requete."' ORDER BY Titre DESC"; 
+                $r = $bdd->query($query) or die ('Problème avec la requête '.  $query.'<br/>'.$bdd->errorInfo()[2]);
+            ?>
 
-       
+            <h3>Résultats de votre recherche</h3>
 
-        <?
+            <?php
+                while($donnees = $r->fetch()) {
+            ?>
 
-        while($donnees = $r->fetch()) 
-        {
+                <a href="song.php?ID=<?php echo $donnees['ID']; ?>">
+                    <?php echo $donnees['Titre']; ?>
+                </a>
 
-        ?>
-
-        <a href="song.php?ID=<? echo $donnees['ID']; ?>"><? echo $donnees['Titre']; ?></a><br/>
-
-        <?
-
-        } // fin de la boucle
-
-        ?><br/>
-    
-    
-    
-    
-    
-    
+            <?php 
+                }
+                $r->closeCursor();
+            ?>
+        </section>
     </body>
+</html>

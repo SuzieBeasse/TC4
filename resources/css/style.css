@@ -1,9 +1,13 @@
-body{padding: 20px}
-header{padding: 0;}
-@media screen and (orientation: portrait) {
-  img.ri { max-width: 90%; }
+header {
+    padding: 0;
 }
 
-@media screen and (orientation: landscape) {
-  img.ri { max-height: 90%; }
+section {
+    padding: 20px;
+}
+
+.avatar {
+    height: 200px;
+    width: 200px;
+    padding: 0px;
 }

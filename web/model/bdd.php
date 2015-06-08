@@ -1,5 +1,4 @@
 
-
        <?php   
  // connexion à la base
             try 

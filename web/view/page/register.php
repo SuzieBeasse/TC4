@@ -7,55 +7,62 @@
        
     </head>
 	<body>
-        <?php include("../component/navbar.php"); ?>
-        <?php include("../component/bdd.php"); ?>
-        <h1>Inscription</h1>
+        <header>
+            <?php include("../component/navbar.php"); ?>
+            <?php include("../../model/bdd.php"); ?>        
+        </header>
         
-        <?php
-            
-            $pictures_dir='../../../resources/pictures/';
-            if ( isset($_FILES['fichier']) && $_FILES['fichier']['type']=='image/jpeg'):
+        <section>
+            <h1>Inscription</h1>
+        
+            <?php
 
-             move_uploaded_file($_FILES['fichier']['tmp_name'],$pictures_dir.$_FILES['fichier']['name']); 
-            
-        ?>
+                $pictures_dir='../../../resources/pictures/';
+                if ( isset($_FILES['fichier']) && $_FILES['fichier']['type']=='image/jpeg'):
 
-             <p>Vous êtes maintenant inscrit !</p>
-             
+                 move_uploaded_file($_FILES['fichier']['tmp_name'],$pictures_dir.$_FILES['fichier']['name']); 
 
-           <?php else:
+            ?>
 
-             if ( isset($_FILES['fichier']) ) { 
-               echo '<div class="error">Le téléchargement est réservé aux fichiers jpeg !</div>';
-             } ?>
+                 <p>Vous êtes maintenant inscrit !</p>
 
-        <div class="row">
-            <form class="col-md-5 col-md-offset-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="InputPrenom">Prénom</label>
-                <input type="text" class="form-control" id="InputPrenom" placeholder="Prénom" name="InputPrenom">
-              </div>
-              <div class="form-group">
-                <label for="InputName">Nom</label>
-                <input type="text" class="form-control" id="InputName" placeholder="Nom" name="InputName">
-              </div>            
-              <div class="form-group">
-                <label for="InputEmail1">Adresse email</label>
-                <input type="email" class="form-control" id="InputEmail1" placeholder="Adresse email" name="InputEmail1">
-              </div>
-              <div class="form-group">
-                <label for="InputPassword1">Mot de passe</label>
-                <input type="password" class="form-control" id="InputPassword1" placeholder="Mot de passe" name="InputPassword1">
-              </div>
-              <div class="form-group">
-                <label for="InputFile">Photo de profil</label>
-                <input type="file" name="fichier">
-               
-              </div>
-              
-              <button type="submit" class="btn btn-default">Submit</button>
-            </form>    
-        </div>
+
+               <?php else:
+
+                 if ( isset($_FILES['fichier']) ) { 
+                   echo '<div class="error">Le téléchargement est réservé aux fichiers jpeg !</div>';
+                 } ?>
+
+            <div class="row">
+                <form class="col-md-5 col-md-offset-3" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="InputPrenom">Prénom</label>
+                    <input type="text" class="form-control" id="InputPrenom" placeholder="Prénom" name="InputPrenom">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputName">Nom</label>
+                    <input type="text" class="form-control" id="InputName" placeholder="Nom" name="InputName">
+                  </div>            
+                  <div class="form-group">
+                    <label for="InputEmail1">Adresse email</label>
+                    <input type="email" class="form-control" id="InputEmail1" placeholder="Adresse email" name="InputEmail1">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputPassword1">Mot de passe</label>
+                    <input type="password" class="form-control" id="InputPassword1" placeholder="Mot de passe" name="InputPassword1">
+                  </div>
+                  <div class="form-group">
+                    <label for="InputFile">Photo de profil</label>
+                    <input type="file" name="fichier">
+
+                  </div>
+
+                  <button type="submit" class="btn btn-default">Submit</button>
+                </form>    
+            </div>       
+        
+        </section>
+        
 
         <?php endif; ?>
          
@@ -77,20 +84,19 @@
             if(isset($_FILES['fichier']))      $photo='/TC4/resources/pictures/'.$_FILES['fichier']['name'];
             else      $photo="";
 
-            include("../../controller/thumb.php");
+            
         
    
             
             
            //On ajoute les infos a la bdd
-            $req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Email, Password, Photo, Thumb) VALUES(:Nom, :Prenom, :Email, :Password, :Photo, :Thumb)');
+            $req = $bdd->prepare('INSERT INTO utilisateurs(Nom, Prenom, Email, Password, Photo) VALUES(:Nom, :Prenom, :Email, :Password, :Photo)');
             $req->execute(array(
                 'Nom' => $nom,
                 'Prenom' => $prenom,
                 'Email' => $email,
                 'Password' => $password,
-                'Photo' => $photo,
-                'Thumb'=> $thumb
+                'Photo' => $photo
                 ));
 
             

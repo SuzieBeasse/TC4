@@ -16,9 +16,9 @@
       <ul class="nav navbar-nav">
           <li><a href="#">Link</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search" action="/TC4/web/view/page/result.php">
+      <form class="navbar-form navbar-left" role="search" action="/TC4/web/view/page/result.php" method="post">
         <div class="form-group" >
-          <input type="text" name="requete" class="form-control" placeholder="Rechercher un titre">
+          <input type="text" name="search" class="form-control" placeholder="Rechercher un titre">
         </div>
         <button type="submit" class="btn btn-default" >Submit</button>
       </form>
