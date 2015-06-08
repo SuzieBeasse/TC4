@@ -38,15 +38,13 @@
             <?php  
                 $req->closeCursor()
             ?>
-            <h2> Tags </h2>
+            <h1> Tags </h1>
+                <div>
+                    <?php include ("../../controller/get_tag.php");?>        
+                </div>
+        
             
                 
-                <div class="row">
-                    <form class="col-md-4 " action="../../controller/tag.php" method="post">
-                        <label for="affiche">Afficher les tags</label>
-                        <button type="submit" class="btn btn-default" id="affiche">Afficher</button>
-                    </form> 
-                </div>
                 <div class="row">
                     <form class="col-md-4 " action="../../controller/tag.php" method="post">
                         <div class="form-group">

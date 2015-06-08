@@ -27,6 +27,6 @@
     $re-> closecursor();
 
     //Redirect user
-    header("Location: /TC4/index.php"); /* Redirect browser */
+    header("Location: /TC4/web/view/page/song.php?ID=$songId"); /* Redirect browser */
     exit();
 ?>
