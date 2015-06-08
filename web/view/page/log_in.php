@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Connexion</title>
 		<link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
+        <link rel="stylesheet" href="/TC4/resources/css/style.css" />
        
     </head>
     

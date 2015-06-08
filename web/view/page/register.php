@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <title>Register</title>
 		<link rel="stylesheet" href="/TC4/resources/css/bootstrap.css" />
+        <link rel="stylesheet" href="/TC4/resources/css/style.css" />
        
     </head>
 	<body>

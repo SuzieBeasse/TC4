@@ -1,5 +1,6 @@
 header {
-    padding: 0;
+    padding:0;
+    background-color: black;
 }
 
 section {
@@ -7,10 +8,11 @@ section {
 }
 
 .avatar {
+     float:left;
     height: 200px;
     width: 200px;
-    padding: 0px;
-    float:left;
+    padding: 0;
+   
 }
 
 .username {
@@ -19,5 +21,18 @@ section {
 }
 
 .logo{
-    float:center;
+    float:none;
+    max-width: 100%;
+    height: auto;
+}
+
+.title{
+    line-height:74px;
+    
+    
+}
+
+.cover{
+    float:left;
+    
 }

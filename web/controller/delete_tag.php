@@ -1,11 +1,8 @@
 <?php
     include("../model/bdd.php");
-      //delete tag from tag table  
+       
      $oldName = $_POST['Name'];
-     $req = $bdd->prepare('DELETE FROM tag WHERE name=:name');
-     $req->execute(array(
-        'name' => $oldName));
-
+     
     //Fetch the tag id
     $r = $bdd->prepare('SELECT * FROM tag WHERE name = :name');
     $r->execute(array(
