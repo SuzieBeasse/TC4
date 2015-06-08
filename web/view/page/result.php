@@ -19,7 +19,7 @@
             <?php
                 $requete = htmlspecialchars($_POST['search']); 
                 $query = "SELECT * FROM chansons WHERE Titre='".$requete."' ORDER BY Titre DESC"; 
-                $r = $bdd->query($query) or die ('Problème avec la requête '.  $query.'<br/>'.$bdd->errorInfo()[2]);
+                $r = $bdd->query($query) or die ('Problème avec la requête '.  $query.$bdd->errorInfo()[2]);
             ?>
 
             <h3>Résultats de votre recherche</h3>

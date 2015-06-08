@@ -38,20 +38,25 @@
             <?php  
                 $req->closeCursor()
             ?>
-            <h2> Tag </h2>
+            <h2> Tags </h2>
             
-            //TODO Afficher les tags
-        
-            <div class="row">
-                <form class="col-md-5 col-md-offset-3" action="TC4/web/controller/tag.php" method="post">
-                    <div class="form-group">
-                        <label for="tagName">Nom</label>
-                        <input type="hidden" name="songId" value="<?php echo $_GET['ID']?>">
-                        <input type="text" class="form-control" id="tagName" placeholder="Entrez le nom du tag" name="tagName">
-                    </div>
-                    <button type="submit" class="btn btn-default">Ajouter</button>
-                </form> 
-            </div>
+                
+                <div class="row">
+                    <form class="col-md-4 " action="../../controller/tag.php" method="post">
+                        <label for="affiche">Afficher les tags</label>
+                        <button type="submit" class="btn btn-default" id="affiche">Afficher</button>
+                    </form> 
+                </div>
+                <div class="row">
+                    <form class="col-md-4 " action="../../controller/tag.php" method="post">
+                        <div class="form-group">
+                            <label for="tagName">Ajouter un tag</label>
+                            <input type="hidden" name="songId" value="<?php echo $_GET['ID']?>">
+                            <input type="text" class="form-control" id="tagName" placeholder="Entrez le nom du tag" name="tagName">
+                        </div>
+                        <button type="submit" class="btn btn-default">Ajouter</button>
+                    </form> 
+                 </div>
             
         </section> 
     </body>

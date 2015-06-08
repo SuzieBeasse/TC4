@@ -1,5 +1,5 @@
 <body>
-    <?php include("../view/component/bdd.php"); ?>
+    <?php include("../model/bdd.php"); ?>
     <?php 
 
             session_start();

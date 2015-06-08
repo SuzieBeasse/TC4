@@ -1,6 +1,6 @@
 <?php
     // connexion à la base
-    include("../view/component/bdd.php");
+    include("../model/bdd.php");
 
     $email=$_POST['InputEmail2'];
     $password2=$_POST['InputPassword2'];
