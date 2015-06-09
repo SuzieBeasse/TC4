@@ -15,27 +15,12 @@
         </header>
         
         <section>
-            <?php
-
-                $pictures_dir='../../../resources/pictures/';
-                if ( isset($_FILES['fichier']) && $_FILES['fichier']['type']=='image/jpeg'):
-
-                 move_uploaded_file($_FILES['fichier']['tmp_name'],$pictures_dir.$_FILES['fichier']['name']); 
-
-            ?>
-            
-            <?php else:
-
-                 if ( isset($_FILES['fichier']) ) { 
-                   echo 'Le téléchargement est réservé aux fichiers jpeg !';
-                 } ?>
-                    <p>La chanson a été ajoutée à la liste</p>
-            
+        
             
             <div class="col-md-5 col-md-offset-2"> <h1> Ajouter une chanson</h1>
             </div>
             
-            <form class="col-md-5 col-md-offset-3" action="?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+            <form class="col-md-5 col-md-offset-3" action="/TC4/web/controller/ad_song.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="songName">Titre de la chanson</label>
                 <input type="name" class="form-control" id="songName" name="songName" placeholder="Ecrire le titre">
@@ -50,7 +35,7 @@
               </div>
               <div class="form-group">
                 <label for="year">Année de sortie</label>
-                <input type="year" class="form-control" id="year" name="year" placeholder="Annee de sortie">
+                <input type="int" class="form-control" id="year" name="year" placeholder="Annee de sortie">
               </div>
               <div class="form-group">
                 <label for="genre">Genre</label>
@@ -67,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label for="cover">Photo de l'album</label>
-                <input type="file"  name="fichier">
+                <input type="file"  name="chanson">
                 <p class="help-block">Ne téléchargez que des images au format jpg</p>
               </div>
               <div class="form-group">
@@ -76,63 +61,8 @@
               
               <button type="submit" class="btn btn-default">Ajouter</button>
             </form>
-            
-             <?php endif; ?>
-       <?php
-    // On commence par récupérer les champs
-            if(isset($_POST['titre']))      $titre=$_POST['Titre'];
-            else      $titre="";
-
-            if(isset($_POST['singer']))      $singer=$_POST['singer'];
-            else      $singer="";
-
-            if(isset($_POST['album']))      $album=$_POST['album'];
-            else      $album="";
-
-            if(isset($_POST['year']))      $year=$_POST['year'];
-            else      $year="";
-
-            if(isset($_POST['genre']))      $genre=$_POST['genre'];
-            else      $genre="";
-            
-            if(isset($_POST['video']))      $video=htmlspecialchars($_POST['video']);
-            else      $video="";
-            
-            if(isset($_POST['country']))      $country=$_POST['country'];
-            else      $country="";
-            
-            if(isset($_POST['score']))      $score=$_POST['score'];
-            else      $score="";
-
-            if(isset($_FILES['fichier']))      $cover='/TC4/resources/cover/'.$_FILES['fichier']['name'];
-            else      $cover="";
-
-            
-        
+      
    
-            
-            
-           //On ajoute les infos a la bdd
-            $req = $bdd->prepare('INSERT INTO chansons (Titre, Interprete, Album, Genre, AnneeDeSortie, VideoYoutube, Pays, Pochettes, Score) VALUES(:Titre, :Interprete, :Album, :Genre, :AnneeDeSortie, :VideoYoutube, :Pays, :Pochettes, :Score)');
-            $req->execute(array(
-                'Titre' => $titre,
-                'Interprete' => $singer,
-                'Album' => $album,
-                'AnneeDeSortie' => $year,
-                'Genre' => $genre,
-                'VideoYoutube'=> $video,
-                'Pays' => $country,
-                'Pochettes' => $cover,
-                'Score' => $score             
-                
-                ));
-
-            
-
-
-                
-?> 
-        
         
         </section>
     </body>

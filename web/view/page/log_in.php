@@ -18,7 +18,7 @@
             <h1> Connexion</h1>
         
             <div class="row">
-                <form class="col-md-5 col-md-offset-3" action="/TC4/web/controller/connect.php" method="post" enctype="multipart/form-data">
+                <form class="col-md-5 col-md-offset-3" action="/TC4/web/controller/connect.php" method="post" >
                     <div class="form-group">
                     <label for="InputEmail2">Adresse email</label>
                     <input type="email" class="form-control" id="InputEmail2" placeholder="Adresse email" name="InputEmail2">
