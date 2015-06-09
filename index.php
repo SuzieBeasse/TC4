@@ -20,7 +20,7 @@
             
                     
             <p>
-            <h2> Top 200 </h2>
+            <div class="col-md-offset-2"><h1 > Top 200 </h1></div>
                 <?php 
                     $reponse = $bdd->query('SELECT * FROM chansons ORDER BY Score DESC');
                     while ($donnees = $reponse->fetch()) {

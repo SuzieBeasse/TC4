@@ -31,7 +31,7 @@
                <?php else:
 
                  if ( isset($_FILES['fichier']) ) { 
-                   echo '<div class="error">Le téléchargement est réservé aux fichiers jpeg !</div>';
+                   echo 'Le téléchargement est réservé aux fichiers jpeg !';
                  } ?>
 
             <div class="row">
