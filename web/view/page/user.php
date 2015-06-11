@@ -22,14 +22,14 @@
             ?>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-offset-1">
                     <img class="img-circle avatar" src="<?php echo $donnees['Photo'] ?>" alt="Photo de profil">
                                 
                     <h1 class="username"><?php echo '   '.$donnees['Prenom'] . ' '. $donnees['Nom'] ?></h1>  
                 </div>
             </div>                     
 
-            <div class="col-md-6 col-md-offset-1" >
+            <div class="col-md-6 col-md-offset-2" >
                 <h2> Top perso </h2>
                     <p>
                         <ol> 

@@ -15,7 +15,7 @@
 
                 endif;
         // On commence par récupérer les champs
-                    if(isset($_POST['titre']))      $titre=$_POST['Titre'];
+                    if(isset($_POST['titre']))      $titre=$_POST['titre'];
                     else      $titre="";
 
                     if(isset($_POST['singer']))      $singer=$_POST['singer'];
@@ -30,7 +30,7 @@
                     if(isset($_POST['genre']))      $genre=$_POST['genre'];
                     else      $genre="";
 
-                    if(isset($_POST['video']))      $video=htmlspecialchars($_POST['video']);
+                    if(isset($_POST['video']))      $video=$_POST['video'];
                     else      $video="";
 
                     if(isset($_POST['country']))      $country=$_POST['country'];
@@ -61,7 +61,8 @@
                         'Score' => $score             
 
                         ));
-
+            header("Location: /TC4/index.php"); /* Redirect browser */
+            exit();
 
 
 ?>

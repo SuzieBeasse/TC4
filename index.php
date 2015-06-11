@@ -11,7 +11,7 @@
             <?php include("web/view/component/navbar.php"); ?>
             <?php include("web/model/bdd.php"); ?>
             <div >
-                <img class="logo" src="/TC4/resources/pictures/centrale_sound.jpg" alt="Centrale Sound">
+                <img class="logo img-responsive" src="/TC4/resources/pictures/centrale_sound.jpg" alt="Centrale Sound">
                 
             </div>
         </header>

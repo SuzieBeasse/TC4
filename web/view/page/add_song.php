@@ -22,8 +22,8 @@
             
             <form class="col-md-5 col-md-offset-3" action="/TC4/web/controller/ad_song.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="songName">Titre de la chanson</label>
-                <input type="name" class="form-control" id="songName" name="songName" placeholder="Ecrire le titre">
+                <label for="titre">Titre de la chanson</label>
+                <input type="name" class="form-control" id="titre" name="titre" placeholder="Ecrire le titre">
               </div>
               <div class="form-group">
                 <label for="singer">Interprète</label>
@@ -35,7 +35,7 @@
               </div>
               <div class="form-group">
                 <label for="year">Année de sortie</label>
-                <input type="int" class="form-control" id="year" name="year" placeholder="Annee de sortie">
+                <input type="year" class="form-control"  name="year" placeholder="Annee de sortie">
               </div>
               <div class="form-group">
                 <label for="genre">Genre</label>

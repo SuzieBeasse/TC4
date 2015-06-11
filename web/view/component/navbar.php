@@ -22,20 +22,20 @@
       
           <?php 
                 session_start();
-if (isset($_SESSION['Email']) ){  ?>
-        <ul class="nav navbar-nav">
-          <li><a href="/TC4/web/view/page/add_song.php">Ajouter une chanson</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/TC4/web/view/page/user.php">Profil</a></li>
-                    <li><a href="/TC4/web/controller/deconnect.php">Se déconnecter</a></li> 
-        </ul>
-          <?php } 
-                    else { ?>  
-            <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/TC4/web/view/page/log_in.php">Se connecter</a></li>
-                    <li><a href="/TC4/web/view/page/register.php">Créer un compte</a></li>
-            </ul>
+                if (isset($_SESSION['Email']) ){  ?>
+                    <ul class="nav navbar-nav">
+                         <li><a href="/TC4/web/view/page/add_song.php">Ajouter une chanson</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/TC4/web/view/page/user.php">Profil</a></li>
+                        <li><a href="/TC4/web/controller/deconnect.php">Se déconnecter</a></li> 
+                    </ul>
+                      <?php } 
+                  else { ?>  
+                    <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/TC4/web/view/page/log_in.php">Se connecter</a></li>
+                            <li><a href="/TC4/web/view/page/register.php">Créer un compte</a></li>
+                    </ul>
           <?php } ?>
       
     </div><!-- /.navbar-collapse -->
