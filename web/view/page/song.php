@@ -19,15 +19,15 @@
                 $donnees=$req->fetch();
             ?>
         
-            <h1> <?php echo $donnees['Titre']; ?> </h1> 
+            <h1 class="col-md-offset-1"> <?php echo $donnees['Titre']; ?> </h1> 
             
-            <p>
+            <p class="col-md-offset-1">
                 <?php echo $donnees['VideoYoutube']; ?>
             </p>
             
-            <h1> Informations relatives à la chanson </h1>
+            <h1 class="col-md-offset-1"> Informations relatives à la chanson </h1>
             <p>
-                <ul>
+                <ul class="col-md-offset-1">
                     <li>Interprète : <?php echo $donnees['Interprete']; ?></li>
                     <li>Album : <?php echo $donnees['Album']; ?></li>
                     <li>Année de sortie : <?php echo $donnees['AnneeDeSortie']; ?></li>
@@ -38,12 +38,13 @@
             <?php  
                 $req->closeCursor()
             ?>
-            <h1> Tags </h1>
-                <div>
+            <h1 class="col-md-offset-1"> Tags </h1>
+                <div class="col-md-offset-1">
                     <?php include ("../../controller/get_tag.php");?>        
                 </div>
                                 
-                <div class="row">
+                <div class="row col-md-offset-1">
+                    </br>
                     <form class="col-md-4 " action="../../controller/tag.php" method="post">
                         <div class="form-group">
                             <label for="tagName">Ajouter un tag</label>
